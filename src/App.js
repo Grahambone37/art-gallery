@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
-import { Gallery } from './gallery';
+import Gallery from './gallery';
+import ButtonBar from './button-bar';
 
 function App() {
   let [artId, setArtId] = useState(12720)
   let [data, setData] = useState({})
+  const handleIterate = (e) => {
+    setArtId(artId + Number(e.target.value))
+  }
   useEffect(() => {
     document.title = 'Welcome to ArtWorld'
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artId}`)
@@ -14,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <Gallery objectImg={data.primaryImage} artist={data.artistDisplayName} title={data.title} />
+      <ButtonBar handleIterate={handleIterate} />
     </div>
   );
 }

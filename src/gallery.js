@@ -1,7 +1,7 @@
-export function Gallery(props) {
+export default function Gallery(props) {
     return (
-        <div style={{ 'width': '100%' }}>
-            <img src={props.objectImg} alt={props.title} />
+        <div>
+            <img style={{ 'width': '100%' }} src={props.objectImg} alt={props.title} />
             <p>{props.artist}</p>
         </div>
     )
